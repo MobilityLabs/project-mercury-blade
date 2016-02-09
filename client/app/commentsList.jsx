@@ -1,11 +1,19 @@
 'use strict';
 
-const React = require('react');
+const React = require('react'),
+      Comment = require('./comment.jsx');
 
 const CommentsList = React.createClass({
-  render: function() {
+  propTypes: {
+    comments: React.PropTypes.array.isRequired
+  },
+  render() {
     return (
-      <p>Hello World and Nephi</p>
+      <div className="comments-list">
+        {this.props.comments.map((comment) => {
+          return <Comment key={comment.id} comment={comment} />
+        })}
+      </div>
     );
   }
 });

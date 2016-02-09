@@ -4,7 +4,10 @@ const React = require('react'),
       ReactDOM = require('react-dom'),
       CommentsList = require('./commentsList.jsx');
 
+const comments = window.comments;
+console.log('Comments:', comments);
+
 ReactDOM.render(
-  <CommentsList />,
+  <CommentsList comments={comments} />,
   document.getElementById('app')
 );
