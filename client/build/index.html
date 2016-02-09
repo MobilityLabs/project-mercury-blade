@@ -2,6 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8"/>
+    <script>
+      window.comments = [{
+        id: 1,
+        author: 'Julio',
+        content: 'This is really cool',
+        created_at: Date.now(),
+        children: [{
+          id: 2,
+          author: 'Nephi',
+          content: "I don't like this",
+          created_at: Date.now(),
+          children: []
+        }]
+      }];
+    </script>
   </head>
   <body>
     <div id="app"></div>
