@@ -1,1 +1,6 @@
-<img src="<%= @image.image.url %>">
+<% if @image.flag_count < 3 %>
+  <p><img src="<%= @image.image.url %>"></p>
+  <p><%= button_to "Flag!", flag_image_path( @image ), remote: true %></p>
+<% else %>
+  <p>Image has been flagged 3 times.</p>
+<% end %>

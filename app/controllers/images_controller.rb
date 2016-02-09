@@ -12,4 +12,12 @@ class ImagesController < ApplicationController
 
     render nothing: true, status: :created
   end
+
+  def flag
+    image = Image.find( params[:id] )
+    image.flag_count = image.flag_count + 1
+    image.save
+
+    redirect_to image
+  end
 end
