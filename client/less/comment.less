@@ -1,36 +1,42 @@
-@muted: #CCC;
-@muted-hover: #999;
+.comment {
+  @muted: #CCC;
+  @muted-hover: #999;
 
-.fa {
-  color: @muted;
-}
-
-.user-data {
-  margin-bottom: 15px;
-
-  .user-name {
-    font-weight: 700;
-  }
-
-  .update-date {
-    text-align: right;
+  .fa {
     color: @muted;
-    text-transform: capitalize;
   }
-}
 
-.reply-btn {
-  color: @muted;
+  .user-data {
+    margin-bottom: 15px;
 
-  &:hover {
-    color: @muted-hover;
+    .user-name {
+      font-weight: 700;
+    }
 
-    .reply-ico {
-      color: @muted-hover;
+    .update-date {
+      text-align: right;
+      color: @muted;
+      text-transform: capitalize;
     }
   }
-}
 
-.more-options-btn:hover .more-options-btn {
-  color: @muted-hover;
+  .reply-btn {
+    color: @muted;
+
+    &:hover {
+      color: @muted-hover;
+
+      .reply-ico {
+        color: @muted-hover;
+      }
+    }
+  }
+
+  .more-options-btn:hover .more-options-btn {
+    color: @muted-hover;
+  }
+
+  .children .comment {
+    padding: 10px 30px;
+  }
 }

@@ -38,9 +38,25 @@ const CommentForm = React.createClass({
 
     return (
       <form className="comment-form" onSubmit={this.submitComment}>
-        <input type="text" value={this.state.author} onChange={this.updateAuthor} />
-        <textarea type="text" value={this.state.content} onChange={this.updateContent} />
-        <input type="submit" value="Add" disabled={!canSubmit} />
+        <div className="form-group">
+          <label htmlFor={`comment-name${this.props.parent.id}`}>Name</label>
+          <input type="text"
+                 className="form-control"
+                 id={`comment-name${this.props.parent.id}`}
+                 value={this.state.author}
+                 onChange={this.updateAuthor} />
+        </div>
+        <div className="form-group">
+          <label htmlFor={`comment-content${this.props.parent.id}`}>Comment</label>
+          <textarea className="form-control"
+                    id={`comment-content${this.props.parent.id}`}
+                    value={this.state.content}
+                    onChange={this.updateContent}
+                    rows="4"/>
+        </div>
+        <div className="form-group">
+          <button type="submit" className="btn btn-default" disabled={!canSubmit}>Add</button>
+        </div>
       </form>
     );
   }
