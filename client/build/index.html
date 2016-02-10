@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8"/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script>
       window.comments = [{
         id: 1,
@@ -19,7 +22,40 @@
     </script>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="mercury-blade container" id="app">
+    </div>
+    <div class="kill-me mercury-blade container">
+      <div class="image-body">
+        <div class="current-image"></div>
+      </div>
+      <div class="comments">
+        <div class="comment">
+          <div class="user-data row">
+            <div class="user-name col-xs-8">JasonB</div>
+            <div class="update-date col-xs-4">3 days ago</div>
+          </div>
+          <div class="comment-body">
+            <div class="comment-text">The path of the righteous man is beset on all sides by the
+              iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and
+              good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper
+              and the finder of lost children. And I will strike down upon thee with great vengeance and furious
+              anger those who would attempt to poison and destroy My brothers. And you will know My name is the
+              Lord when I lay My vengeance upon thee.
+            </div>
+          </div>
+          <div class="actions">
+            <div class="btn reply-btn">
+              <i class="fa fa-mail-reply reply-ico"></i>
+              Reply
+            </div>
+            <div class="btn more-options-btn">
+              <i class="fa fa-ellipsis-h more-options-ico"></i>
+            </div>
+          </div>
+        </div>
+        <i class="fa fa-times-circle fa-inverse close-ico"></i>
+      </div>
+    </div>
     <script src="bundle.js"></script>
   </body>
 </html>
