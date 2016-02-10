@@ -19,6 +19,12 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loaders: ['babel-loader']
+    }, {
+      test: /\.less$/,
+      loader: "style!css!less"
+    }, {
+      test: /\.jpg$/,
+      loader: "file-loader"
     }]
   },
   devtool: 'source-map'
