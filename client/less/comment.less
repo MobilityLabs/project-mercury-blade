@@ -1,0 +1,36 @@
+@muted: #CCC;
+@muted-hover: #999;
+
+.fa {
+  color: @muted;
+}
+
+.user-data {
+  margin-bottom: 15px;
+
+  .user-name {
+    font-weight: 700;
+  }
+
+  .update-date {
+    text-align: right;
+    color: @muted;
+    text-transform: capitalize;
+  }
+}
+
+.reply-btn {
+  color: @muted;
+
+  &:hover {
+    color: @muted-hover;
+
+    .reply-ico {
+      color: @muted-hover;
+    }
+  }
+}
+
+.more-options-btn:hover .more-options-btn {
+  color: @muted-hover;
+}
