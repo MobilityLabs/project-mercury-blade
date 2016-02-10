@@ -5,7 +5,6 @@ const React = require('react'),
       CommentsList = require('./commentsList.jsx');
 
 const comments = window.comments;
-console.log('Comments:', comments);
 
 ReactDOM.render(
   <CommentsList comments={comments} />,
