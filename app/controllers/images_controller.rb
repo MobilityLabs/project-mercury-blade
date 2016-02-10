@@ -21,4 +21,26 @@ class ImagesController < ApplicationController
 
     redirect_to image
   end
+
+  def add_comment
+    image = Image.find_by!( uuid: params[:uuid] )
+
+    comment = Comment.create!(
+      commentable: image,
+      body: comment_params[:body],
+      username: comment_params[:username],
+      parent_id: comment_params[:parent_id],
+      # FIXME: remove the below 2 lines when Jason updates the gem
+      commentator_id: 0,
+      commentator_type: ""
+    )
+
+    render nothing: true, status: :created
+  end
+
+private
+
+  def comment_params
+    params.require( :comment ).permit( :body, :username, :parent_id )
+  end
 end

@@ -53,6 +53,9 @@ gem "carrierwave"
 gem "fog", "~> 1.20.0"
 gem "file_validators"
 
+# comments
+gem "project-omaha", git: "https://github.com/MobilityLabs/project-omaha.git"
+
 # because heroku
 gem 'rails_12factor', group: :production
 ruby "2.3.0"

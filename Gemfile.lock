@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/MobilityLabs/project-omaha.git
+  revision: ec8988606e67a1754e38114043f97c7c419829ab
+  specs:
+    project-omaha (0.1.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      awesome_nested_set (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,6 +46,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    awesome_nested_set (3.0.3)
+      activerecord (>= 4.0.0, < 5)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -177,6 +188,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.15)
+  project-omaha!
   puma
   rails (= 4.2.5.1)
   rails_12factor
