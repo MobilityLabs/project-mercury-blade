@@ -1,7 +1,5 @@
 <script>
-  MercuryBlade = {
-    comments: <%= raw @image.hierarchical_comments.to_json %>
-  };
+  window.comments = <%= raw @image.hierarchical_comments.to_json %>;
 </script>
 
 <% if @image.flag_count < 3 %>

@@ -27,13 +27,16 @@ const Comment = React.createClass({
     newComment.id = 100;
     newComment.children = [];
 
-    const url = 'http://mercuryblade.herokuapp.com/images/fa1ef5b5-155f-4db1-bc96-39e1063e69ef/add_comment';
+    const url = window.location + '/add_comment';
     $.ajax({
       url,
       method: 'POST',
       data: {
-        body: newComment.content,
-        username: newComment.author
+        comment: {
+          body: newComment.content,
+          username: newComment.author,
+          parent_id: newComment.parentId
+        }
       },
       success: () => {
         this.setState({

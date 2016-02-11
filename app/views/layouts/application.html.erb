@@ -2,13 +2,36 @@
 <html>
 <head>
   <title>Mercuryblade</title>
+
+  <meta charset="UTF-8"/>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script>
+    window.comments = [{
+      id: 1,
+      author: 'Julio',
+      content: 'This is really cool',
+      created_at: Date.now(),
+      children: [{
+        id: 2,
+        author: 'Nephi',
+        content: "I don't like this",
+        created_at: Date.now(),
+        children: []
+      }]
+    }];
+  </script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <%= yield %>
+
+  <div class="mercury-blade container" id="app"></div>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>

@@ -28,7 +28,7 @@ const CommentForm = React.createClass({
     const author = this.state.author.trim(),
           content = this.state.content.trim();
 
-    this.props.onCreateComment({author, content });
+    this.props.onCreateComment({author, content, parentId: this.props.parent.id });
     this.setState({ author: '', content: '' });
 
     e.preventDefault();
