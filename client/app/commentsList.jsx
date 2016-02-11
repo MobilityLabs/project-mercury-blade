@@ -11,7 +11,7 @@ const CommentsList = React.createClass({
     return (
       <div className="comments-list">
         {this.props.comments.map((comment) => {
-          return <Comment key={comment.id} comment={comment} />
+          return <Comment key={comment.id} comment={comment} nesting={0} />
         })}
       </div>
     );

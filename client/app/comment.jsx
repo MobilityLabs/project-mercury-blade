@@ -57,13 +57,14 @@ const Comment = React.createClass({
   },
   render() {
     const comment = this.state.comment;
+    let nestingLevel = this.props.nesting;
 
     let form = '';
     if (this.state.shouldShowForm) {
       form = <CommentForm onCreateComment={this.createComment} parent={comment} />;
     }
     return (
-      <div className="comment">
+      <div className="comment" data-nesting-level={nestingLevel}>
         <div className="user-data row">
           <div className="user-name col-xs-8">{comment.author}</div>
           <div className="update-data col-xs-4"></div>
@@ -71,7 +72,7 @@ const Comment = React.createClass({
         <div className="comment-body">{comment.content}</div>
         <div className="children">
           {comment.children.map((child) => {
-            return <Comment key={child.id} comment={child} />
+            return <Comment key={child.id} comment={child} nesting={nestingLevel + 1} />
           })}
         </div>
         <div className="actions">
