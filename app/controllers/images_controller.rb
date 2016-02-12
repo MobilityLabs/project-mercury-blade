@@ -35,7 +35,7 @@ class ImagesController < ApplicationController
       commentator_type: ""
     )
 
-    render nothing: true, status: :created
+    render json: { comment: BrianSpeak.as_brian_comment(comment) }, status: :created
   end
 
 private

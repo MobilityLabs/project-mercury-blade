@@ -1,18 +1,45 @@
 'use strict';
 
 const React = require('react'),
-      Comment = require('./comment.jsx');
+      API = require('./api'),
+      Comment = require('./comment.jsx'),
+      CommentForm = require('./commentForm.jsx');
 
 const CommentsList = React.createClass({
-  propTypes: {
-    comments: React.PropTypes.array.isRequired
+  getInitialState() {
+    return {
+      comments: []
+    };
+  },
+  componentWillMount() {
+    this.setState({
+      comments: window.comments
+    });
+  },
+  createComment(comment) {
+    API
+      .createComment(comment)
+      .then((response) => {
+        const newComment = response.comment;
+        this.setState({
+          comments: [newComment, ...this.state.comments]
+        });
+      });
   },
   render() {
+    const topLevelComments = this.state.comments.filter((comment) => {
+      return !comment.parent_id;
+    });
     return (
       <div className="comments-list">
-        {this.props.comments.map((comment) => {
-          return <Comment key={comment.id} comment={comment} nesting={0} />
+        {topLevelComments.map((comment) => {
+          return <Comment key={comment.id}
+                          commentId={comment.id}
+                          comments={this.state.comments}
+                          nesting={0}
+                          onCreateComment={this.createComment} />
         })}
+        <CommentForm onCreateComment={this.createComment} />
       </div>
     );
   }

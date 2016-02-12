@@ -1,68 +1,52 @@
 'use strict';
 
 const React = require('react'),
+      API = require('./api'),
       CommentForm = require('./commentForm.jsx'),
       $ = require('jquery');
 
 const Comment = React.createClass({
   propTypes: {
-    comment: React.PropTypes.shape({
+    comments: React.PropTypes.arrayOf(React.PropTypes.shape({
       id: React.PropTypes.number.isRequired,
       author: React.PropTypes.string.isRequired,
-      content: React.PropTypes.string.isRequired,
-      children: React.PropTypes.array.isRequired
-    }).isRequired
+      content: React.PropTypes.string.isRequired
+    })).isRequired,
+    commentId: React.PropTypes.number.isRequired,
+    onCreateComment: React.PropTypes.func.isRequired
   },
-  // TODO: this is an anti-pattern: https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html
-  // Flux or Redux would fix this.
   getInitialState() {
     return {
-      comment: this.props.comment,
       shouldShowForm: false
     };
-  },
-  createComment(newComment) {
-    const comment = this.state.comment;
-
-    newComment.id = 100;
-    newComment.children = [];
-
-    const url = window.location + '/add_comment';
-    $.ajax({
-      url,
-      method: 'POST',
-      data: {
-        comment: {
-          body: newComment.content,
-          username: newComment.author,
-          parent_id: newComment.parentId
-        }
-      },
-      success: () => {
-        this.setState({
-          comment: {
-            id: comment.id,
-            author: comment.author,
-            content: comment.content,
-            children: [...comment.children, newComment]
-          }
-        });
-      }
-    });
   },
   toggleForm() {
     this.setState({
       shouldShowForm: !this.state.shouldShowForm
     });
   },
+  getComment() {
+    return this.props.comments.find((comment) => {
+      return comment.id === this.props.commentId;
+    });
+  },
+  getChildren() {
+    return this.props.comments.filter((comment) => {
+      return comment.parent_id === this.props.commentId;
+    });
+  },
   render() {
-    const comment = this.state.comment;
-    let nestingLevel = this.props.nesting;
+    const comment = this.getComment(),
+          children = this.getChildren(),
+          comments = this.props.comments,
+          nestingLevel = this.props.nesting;
 
     let form = '';
+
     if (this.state.shouldShowForm) {
-      form = <CommentForm onCreateComment={this.createComment} parent={comment} />;
+      form = <CommentForm onCreateComment={this.props.onCreateComment} parent={comment} />;
     }
+
     return (
       <div className="comment" data-nesting-level={nestingLevel}>
         <div className="user-data row">
@@ -71,8 +55,12 @@ const Comment = React.createClass({
         </div>
         <div className="comment-body">{comment.content}</div>
         <div className="children">
-          {comment.children.map((child) => {
-            return <Comment key={child.id} comment={child} nesting={nestingLevel + 1} />
+          {children.map((child) => {
+            return <Comment key={child.id}
+                            commentId={child.id}
+                            comments={comments}
+                            onCreateComment={this.props.onCreateComment}
+                            nesting={nestingLevel + 1} />
           })}
         </div>
         <div className="actions">
