@@ -5,9 +5,9 @@
 	<% if @image.flag_count < 3 %>
 	<img src="<%= @image.image.url %>">
 	<div class="flag-container">
-	  	<%= button_to "Flag Image as Innapropriate", flag_image_path( @image.uuid ), remote: true, class: 'btn btn-default' %>
+	  	<%= button_to "Flag Image as inappropriate", flag_image_path( @image.uuid ), remote: true, class: 'btn btn-default' %>
 	</div>
 	<% else %>
-		<h1>Image has been flagged as Innapropriate and has been removed.</h1>
+		<h1>Image has been flagged as inappropriate and has been removed.</h1>
 	<% end %>
 </div>
