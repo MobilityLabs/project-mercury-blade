@@ -1,10 +1,13 @@
 <script>
   window.comments = <%= raw @image.hierarchical_comments.to_json %>;
 </script>
-
-<% if @image.flag_count < 3 %>
-  <p><img src="<%= @image.image.url %>"></p>
-  <p><%= button_to "Flag!", flag_image_path( @image.uuid ), remote: true %></p>
-<% else %>
-  <p>Image has been flagged 3 times.</p>
-<% end %>
+<div class="img-container">
+	<% if @image.flag_count < 3 %>
+	<img src="<%= @image.image.url %>">
+	<div class="flag-container">
+	  	<%= button_to "Flag Image as Innapropriate", flag_image_path( @image.uuid ), remote: true, class: 'btn btn-default' %>
+	</div>
+	<% else %>
+		<h1>Image has been flagged as Innapropriate and has been removed.</h1>
+	<% end %>
+</div>

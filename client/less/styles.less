@@ -2,15 +2,24 @@
 @import 'comment';
 @import 'commentForm';
 
-*, body {
-  font-family: 'Open Sans', sans-serif;
-  color: #333;
-}
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400,700);
+
+@main-font: 'Open Sans', sans-serif;
+@secondary-font: 'Nunito', sans-serif;
 
 body {
+  font-family: @main-font;
+  color: #333;
   background: url('image/bg-repeating.jpg') repeat;
+  background-attachment: fixed;
 }
 
+.btn{
+  font-family: @secondary-font;
+}
+.overflow-auto{
+  overflow: auto;
+}
 .close-btn {
   position: absolute;
   right: -15px;
@@ -27,4 +36,25 @@ body {
     font-size: 32px;
     cursor: pointer;
   }
+}
+
+.img-container{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height:100%;
+  width:100%;
+  padding: .5em;
+  img{
+    max-width:100%;
+    max-height:100%;
+  }
+}
+.flag-container{
+  margin: 2em 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

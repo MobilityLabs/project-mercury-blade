@@ -49,11 +49,17 @@ const Comment = React.createClass({
 
     return (
       <div className="comment" data-nesting-level={nestingLevel}>
-        <div className="user-data row">
-          <div className="user-name col-xs-8">{comment.author}</div>
-          <div className="update-data col-xs-4"></div>
+        <div className="user-data">
+          <div className="user-name pull-left">{comment.author}</div>
+          <div className="update-data pull-right"></div>
         </div>
         <div className="comment-body">{comment.content}</div>
+        <div className="actions">
+          <div className="reply-btn" onClick={this.toggleForm}>
+            <i className="fa fa-mail-reply reply-ico"></i> Reply
+          </div>
+        </div>
+        { form }
         <div className="children">
           {children.map((child) => {
             return <Comment key={child.id}
@@ -63,12 +69,6 @@ const Comment = React.createClass({
                             nesting={nestingLevel + 1} />
           })}
         </div>
-        <div className="actions">
-          <div className="btn reply-btn" onClick={this.toggleForm}>
-            <i className="fa fa-mail-reply reply-ico"></i> Reply
-          </div>
-        </div>
-        { form }
       </div>
     );
   }

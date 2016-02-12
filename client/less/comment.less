@@ -1,42 +1,71 @@
 .comment {
-  @muted: #CCC;
-  @muted-hover: #999;
+  @primary: #607D8B;
+  @muted-primary: lighten(@primary, 30%);
 
+  padding-top: 1em;
   .fa {
-    color: @muted;
+    color: @muted-primary;
   }
 
   .user-data {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
+    display: inline-block;
 
     .user-name {
+      font-size:12px;
+      font-family: @secondary-font;
       font-weight: 700;
+      color: @primary;
+      margin:0;
     }
 
     .update-date {
-      text-align: right;
-      color: @muted;
-      text-transform: capitalize;
+      font-size:12px;
+      font-family: 'Nunito', sans-serif;
+      color: @muted-primary;
     }
   }
 
   .reply-btn {
-    color: @muted;
+    color: @muted-primary;
+    font-family: @secondary-font;
+    font-size: 12px;
+    margin-top: 10px;
+    display: inline-block;
 
     &:hover {
-      color: @muted-hover;
+      color: @primary;
+      cursor: pointer;
 
       .reply-ico {
-        color: @muted-hover;
+        color: @primary;
       }
     }
   }
 
   .more-options-btn:hover .more-options-btn {
-    color: @muted-hover;
-  }
-
-  .children .comment {
-    padding: 10px 30px;
+    color: @muted-primary;
   }
 }
+
+.comment .children{
+  margin-top: 1em;
+}
+
+.comment .children .comment{
+  border-radius: 3px;
+  margin-bottom: .5em;
+  padding: 1em 1em .5em;
+  border-left: 1px solid #66BB6A;
+  background: #F6F7F8;
+}
+
+.comment .children .comment .children .comment{
+  border-left: 1px solid #26C6DA;
+  background: #fff;
+} 
+
+.comment .children .comment .children .comment .children .comment{
+  border-left:1px solid #5C6BC0;
+  background: #F6F7F8;
+} 
