@@ -59,3 +59,6 @@ gem "project-omaha", git: "https://github.com/MobilityLabs/project-omaha.git"
 # because heroku
 gem 'rails_12factor', group: :production
 ruby "2.3.0"
+
+# better asset digest control
+gem "non-stupid-digest-assets"
