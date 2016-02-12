@@ -24,7 +24,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "webpack",
+    "build": "rm ../app/assets/javascripts/bundle* && webpack && cp build/bundle* ../app/assets/javascripts/",
     "dev": "webpack-dev-server --progress --colors --hot --content-base build"
   },
   "author": ""
