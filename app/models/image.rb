@@ -7,7 +7,7 @@ class Image < ActiveRecord::Base
   acts_as_commentable
 
   def hierarchical_comments
-    make_tree( BrianSpeak.translate( self.comment_threads ).as_json )
+    BrianSpeak.translate( self.comment_threads ).as_json
   end
 
 private

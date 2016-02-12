@@ -5,9 +5,7 @@ const React = require('react'),
       CommentsList = require('./commentsList.jsx'),
       css = require('!style!css!less!../less/styles.less');
 
-const comments = window.comments;
-
 ReactDOM.render(
-  <CommentsList comments={comments} />,
+  <CommentsList />,
   document.getElementById('app')
 );
