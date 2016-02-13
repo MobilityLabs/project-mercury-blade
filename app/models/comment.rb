@@ -1,3 +1,5 @@
+require "awesome_nested_set"
+
 class Comment < ActiveRecord::Base
   acts_as_nested_set scope: [:commentable_id, :commentable_type]
 
