@@ -3,6 +3,7 @@ $(document).ready(function() {
 });
 
 $('#comment-message-box').on('click', function(evt) {
+    evt.preventDefault();
     $('.comments-container').toggle();
     if($('.comments-container').is(':hidden')) {
         evt.target.text = 'Show Comments';

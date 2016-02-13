@@ -6,7 +6,7 @@
   <%= text_field_tag 'url', "#{request.host_with_port}/images/#{@image.uuid}" %>
   <div class="comment-info">
     <div><%= pluralize(@comment_count, 'comment') %></div>
-    <a id="comment-message-box" data-comments-visible="false" href="#">Show Comments</a>
+    <a id="comment-message-box" href="#">Show Comments</a>
   </div>
 </nav>
 <div class="img-container">
