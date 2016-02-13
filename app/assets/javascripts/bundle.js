@@ -19707,15 +19707,27 @@
 	    });
 	    return React.createElement(
 	      'div',
-	      { className: 'comments-list' },
-	      topLevelComments.map(function (comment) {
-	        return React.createElement(Comment, { key: comment.id,
-	          commentId: comment.id,
-	          comments: _this2.state.comments,
-	          nesting: 0,
-	          onCreateComment: _this2.createComment });
-	      }),
-	      React.createElement(CommentForm, { onCreateComment: this.createComment })
+	      { className: 'position-container' },
+	      React.createElement(
+	        'div',
+	        { className: 'comments-container' },
+	        React.createElement(
+	          'div',
+	          { className: 'submit' },
+	          React.createElement(CommentForm, { onCreateComment: this.createComment })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'comments-list' },
+	          topLevelComments.map(function (comment) {
+	            return React.createElement(Comment, { key: comment.id,
+	              commentId: comment.id,
+	              comments: _this2.state.comments,
+	              nesting: 0,
+	              onCreateComment: _this2.createComment });
+	          })
+	        )
+	      )
 	    );
 	  }
 	});
@@ -29660,19 +29672,30 @@
 	      { className: 'comment', 'data-nesting-level': nestingLevel },
 	      React.createElement(
 	        'div',
-	        { className: 'user-data row' },
+	        { className: 'user-data' },
 	        React.createElement(
 	          'div',
-	          { className: 'user-name col-xs-8' },
+	          { className: 'user-name pull-left' },
 	          comment.author
 	        ),
-	        React.createElement('div', { className: 'update-data col-xs-4' })
+	        React.createElement('div', { className: 'update-data pull-right' })
 	      ),
 	      React.createElement(
 	        'div',
 	        { className: 'comment-body' },
 	        comment.content
 	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'actions' },
+	        React.createElement(
+	          'div',
+	          { className: 'reply-btn', onClick: this.toggleForm },
+	          React.createElement('i', { className: 'fa fa-mail-reply reply-ico' }),
+	          ' Reply'
+	        )
+	      ),
+	      form,
 	      React.createElement(
 	        'div',
 	        { className: 'children' },
@@ -29683,18 +29706,7 @@
 	            onCreateComment: _this3.props.onCreateComment,
 	            nesting: nestingLevel + 1 });
 	        })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'actions' },
-	        React.createElement(
-	          'div',
-	          { className: 'btn reply-btn', onClick: this.toggleForm },
-	          React.createElement('i', { className: 'fa fa-mail-reply reply-ico' }),
-	          ' Reply'
-	        )
-	      ),
-	      form
+	      )
 	    );
 	  }
 	});
@@ -29757,20 +29769,6 @@
 	        { className: 'form-group' },
 	        React.createElement(
 	          'label',
-	          { htmlFor: 'comment-name' + parentId },
-	          'Name'
-	        ),
-	        React.createElement('input', { type: 'text',
-	          className: 'form-control',
-	          id: 'comment-name' + parentId,
-	          value: this.state.author,
-	          onChange: this.updateAuthor })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
 	          { htmlFor: 'comment-content' + parentId },
 	          'Comment'
 	        ),
@@ -29784,9 +29782,23 @@
 	        'div',
 	        { className: 'form-group' },
 	        React.createElement(
+	          'label',
+	          { htmlFor: 'comment-name' + parentId },
+	          'Name'
+	        ),
+	        React.createElement('input', { type: 'text',
+	          className: 'form-control',
+	          id: 'comment-name' + parentId,
+	          value: this.state.author,
+	          onChange: this.updateAuthor })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'form-group overflow-auto' },
+	        React.createElement(
 	          'button',
-	          { type: 'submit', className: 'btn btn-default', disabled: !canSubmit },
-	          'Add'
+	          { type: 'submit', className: 'btn btn-default pull-right', disabled: !canSubmit },
+	          'Save Comment'
 	        )
 	      )
 	    );
@@ -29827,10 +29839,10 @@
 
 	exports = module.exports = __webpack_require__(170)();
 	// imports
-	
+	exports.push([module.id, "@import url(//fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400,700);", ""]);
 	
 	// module
-	exports.push([module.id, ".comments-list {\n  position: relative;\n  background-color: white;\n  border-radius: 10px;\n  border: #CCC 2px solid;\n  padding: 15px;\n}\n.comment .fa {\n  color: #CCC;\n}\n.comment .user-data {\n  margin-bottom: 15px;\n}\n.comment .user-data .user-name {\n  font-weight: 700;\n}\n.comment .user-data .update-date {\n  text-align: right;\n  color: #CCC;\n  text-transform: capitalize;\n}\n.comment .reply-btn {\n  color: #CCC;\n}\n.comment .reply-btn:hover {\n  color: #999;\n}\n.comment .reply-btn:hover .reply-ico {\n  color: #999;\n}\n.comment .more-options-btn:hover .more-options-btn {\n  color: #999;\n}\n.comment .children .comment {\n  padding: 10px 30px;\n}\n.comment-form {\n  width: 50%;\n}\n*,\nbody {\n  font-family: 'Open Sans', sans-serif;\n  color: #333;\n}\nbody {\n  background: url(" + __webpack_require__(171) + ") repeat;\n}\n.close-btn {\n  position: absolute;\n  right: -15px;\n  top: -15px;\n}\n.close-btn .close-ico-bg {\n  color: #FFF;\n  font-size: 28px;\n  padding-top: 4px;\n}\n.close-btn .close-ico {\n  color: #6923AE;\n  font-size: 32px;\n  cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, ".position-container {\n  top: 0;\n  left: 0;\n  display: block;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.comments-container {\n  width: 100%;\n  max-width: 750px;\n  margin: 25% auto 0;\n  padding: 1em;\n  position: relative;\n  display: block;\n}\n.submit {\n  display: flex;\n  flex-direction: column;\n  background: #fff;\n  border: solid 1px #eee;\n  border-radius: 3px;\n  padding: 1em 1em .25em;\n  margin-bottom: .5em;\n  box-shadow: 0 0 10px #263238;\n}\n.comments-list {\n  position: relative;\n  background: #fff;\n  border: solid 1px #eee;\n  border-radius: 3px;\n  padding: .5em 1.25em 0.75em;\n  margin-bottom: .5em;\n  box-shadow: 0 0 10px #263238;\n}\n.comment {\n  padding-top: 1em;\n}\n.comment .fa {\n  color: #b7c6cd;\n}\n.comment .user-data {\n  margin-bottom: 0px;\n  display: inline-block;\n}\n.comment .user-data .user-name {\n  font-size: 12px;\n  font-family: 'Nunito', sans-serif;\n  font-weight: 700;\n  color: #607D8B;\n  margin: 0;\n}\n.comment .user-data .update-date {\n  font-size: 12px;\n  font-family: 'Nunito', sans-serif;\n  color: #b7c6cd;\n}\n.comment .reply-btn {\n  color: #b7c6cd;\n  font-family: 'Nunito', sans-serif;\n  font-size: 12px;\n  margin-top: 10px;\n  display: inline-block;\n}\n.comment .reply-btn:hover {\n  color: #607D8B;\n  cursor: pointer;\n}\n.comment .reply-btn:hover .reply-ico {\n  color: #607D8B;\n}\n.comment .more-options-btn:hover .more-options-btn {\n  color: #b7c6cd;\n}\n.comment .children {\n  margin-top: 1em;\n}\n.comment .children .comment {\n  border-radius: 3px;\n  margin-bottom: .5em;\n  padding: 1em 1em .5em;\n  border-left: 1px solid #66BB6A;\n  background: #F6F7F8;\n}\n.comment .children .comment .children .comment {\n  border-left: 1px solid #26C6DA;\n  background: #fff;\n}\n.comment .children .comment .children .comment .children .comment {\n  border-left: 1px solid #5C6BC0;\n  background: #F6F7F8;\n}\n.comment-form {\n  width: 100%;\n}\n.actions + .comment-form {\n  margin-top: 1em;\n}\nbody {\n  font-family: 'Open Sans', sans-serif;\n  color: #333;\n  background: url(" + __webpack_require__(171) + ") repeat;\n  background-attachment: fixed;\n}\n.btn {\n  font-family: 'Nunito', sans-serif;\n}\n.overflow-auto {\n  overflow: auto;\n}\n.close-btn {\n  position: absolute;\n  right: -15px;\n  top: -15px;\n}\n.close-btn .close-ico-bg {\n  color: #FFF;\n  font-size: 28px;\n  padding-top: 4px;\n}\n.close-btn .close-ico {\n  color: #6923AE;\n  font-size: 32px;\n  cursor: pointer;\n}\n.img-container {\n  position: fixed;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  padding: .5em;\n}\n.img-container img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.flag-container {\n  margin: 2em 0 0;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n}\n", ""]);
 	
 	// exports
 

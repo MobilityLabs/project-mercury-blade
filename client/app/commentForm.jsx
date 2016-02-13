@@ -43,14 +43,6 @@ const CommentForm = React.createClass({
     return (
       <form className="comment-form" onSubmit={this.submitComment}>
         <div className="form-group">
-          <label htmlFor={`comment-name${parentId}`}>Name</label>
-          <input type="text"
-                 className="form-control"
-                 id={`comment-name${parentId}`}
-                 value={this.state.author}
-                 onChange={this.updateAuthor} />
-        </div>
-        <div className="form-group">
           <label htmlFor={`comment-content${parentId}`}>Comment</label>
           <textarea className="form-control"
                     id={`comment-content${parentId}`}
@@ -59,7 +51,15 @@ const CommentForm = React.createClass({
                     rows="4"/>
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-default" disabled={!canSubmit}>Add</button>
+          <label htmlFor={`comment-name${parentId}`}>Name</label>
+          <input type="text"
+                 className="form-control"
+                 id={`comment-name${parentId}`}
+                 value={this.state.author}
+                 onChange={this.updateAuthor} />
+        </div>
+        <div className="form-group overflow-auto">
+          <button type="submit" className="btn btn-default pull-right" disabled={!canSubmit}>Save Comment</button>
         </div>
       </form>
     );

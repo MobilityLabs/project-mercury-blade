@@ -31,15 +31,21 @@ const CommentsList = React.createClass({
       return !comment.parent_id;
     });
     return (
-      <div className="comments-list">
-        {topLevelComments.map((comment) => {
-          return <Comment key={comment.id}
-                          commentId={comment.id}
-                          comments={this.state.comments}
-                          nesting={0}
-                          onCreateComment={this.createComment} />
-        })}
-        <CommentForm onCreateComment={this.createComment} />
+      <div className="position-container">
+        <div className="comments-container">
+          <div className="submit">
+            <CommentForm onCreateComment={this.createComment} />
+          </div>
+          <div className="comments-list">
+            {topLevelComments.map((comment) => {
+              return <Comment key={comment.id}
+                              commentId={comment.id}
+                              comments={this.state.comments}
+                              nesting={0}
+                              onCreateComment={this.createComment} />
+            })}
+          </div>
+        </div>
       </div>
     );
   }
