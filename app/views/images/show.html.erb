@@ -1,6 +1,14 @@
 <script>
   window.comments = <%= raw @image.hierarchical_comments.to_json %>;
 </script>
+<nav class="navigation">
+  <%= image_tag('skimg-logo.png', class: 'logo') %>
+  <%= text_field_tag 'url', "#{request.host_with_port}/images/#{@image.uuid}" %>
+  <div class="comment-info">
+    <div><%= pluralize(@comment_count, 'comment') %></div>
+    <a id="comment-message-box" data-comments-visible="false" href="#">Show Comments</a>
+  </div>
+</nav>
 <div class="img-container">
   <% if @image.flag_count < 3 %>
       <img src="<%= @image.image.url %>">
