@@ -1,0 +1,5 @@
+<form enctype="multipart/form-data" action="/images" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %> 
+  <input type="file" name="image" />
+  <input type="submit" value="Create Image" />
+</form>

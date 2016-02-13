@@ -1,6 +1,9 @@
 class ImagesController < ApplicationController
   skip_before_action :verify_authenticity_token
   
+  def home
+  end
+
   def show
     @image = Image.find_by!( uuid: params[:uuid] )
   end
@@ -11,7 +14,14 @@ class ImagesController < ApplicationController
     image.uuid = SecureRandom.uuid
     image.save!
 
-    render json: {link: image_url( image.uuid )}, status: :created
+    respond_to do |format|
+      format.js do
+        render json: {link: image_url( image.uuid )}, status: :created
+      end
+      format.html do
+        redirect_to image_url( image.uuid )
+      end
+    end
   end
 
   def flag

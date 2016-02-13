@@ -3,4 +3,6 @@ Rails.application.routes.draw do
     post "flag", on: :member
     post "add_comment", on: :member
   end
+
+  root to: "images#home"
 end

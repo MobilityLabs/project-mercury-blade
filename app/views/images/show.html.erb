@@ -1,6 +1,7 @@
 <script>
   window.comments = <%= raw @image.hierarchical_comments.to_json %>;
 </script>
+
 <div class="img-container">
 	<% if @image.flag_count < 3 %>
 	<img src="<%= @image.image.url %>">
@@ -11,3 +12,5 @@
 		<h1>Image has been flagged as inappropriate and has been removed.</h1>
 	<% end %>
 </div>
+<div class="mercury-blade container" id="app"></div>
+<%= javascript_include_tag 'react-only', 'data-turbolinks-track' => true %>
