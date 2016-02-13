@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/MobilityLabs/project-omaha.git
-  revision: ec8988606e67a1754e38114043f97c7c419829ab
+  revision: 02f02a9af7d103c2e3f8054addf581df2a7263ad
   specs:
-    project-omaha (0.1.0)
+    project-omaha (0.1.1)
       activerecord (>= 4.0)
       activesupport (>= 4.0)
       awesome_nested_set (>= 3.0)
