@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :load_comment_count
   
   def home
   end
@@ -52,5 +53,11 @@ private
 
   def comment_params
     params.require( :comment ).permit( :body, :username, :parent_id )
+  end
+
+
+  def load_comment_count
+    image = Image.find_by!( uuid: params[:uuid] )
+    @comment_count = image.comment_threads.size
   end
 end
